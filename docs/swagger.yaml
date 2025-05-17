@@ -1,0 +1,55 @@
+basePath: /
+definitions:
+  models.Siswa:
+    properties:
+      id_siswa:
+        type: integer
+      nama:
+        type: string
+      nisn:
+        type: string
+    type: object
+host: localhost:5555
+info:
+  contact: {}
+  description: API untuk sistem Edulite
+  title: Edulite API
+  version: "1.0"
+paths:
+  /siswa/{nisn}:
+    get:
+      consumes:
+      - application/json
+      description: Ambil data siswa berdasarkan NISN
+      parameters:
+      - description: NISN
+        in: path
+        name: nisn
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Siswa'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Get siswa by NISN
+      tags:
+      - Siswa
+schemes:
+- http
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
