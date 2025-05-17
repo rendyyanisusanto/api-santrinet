@@ -14,7 +14,16 @@ func GetPelanggaranById(c *gin.Context) {
 	id := c.Param("id")
 
 	var pelanggaran []models.Pelanggaran
-	if err := db.Preload("Santri").Preload("Tatib").Preload("Pengurus").Preload("Pengurus.Santri").Preload("Pengurus.LembagaPengurus").Order("id DESC").Find(&pelanggaran, "santri_id= ?", id).Error; err != nil {
+	if err := db.
+		Preload("Santri").
+		Preload("Tatib").
+		Preload("Pengurus").
+		Preload("Pengurus.Santri").
+		Preload("Pengurus.LembagaPengurus").
+		Where("santri_id = ? AND (status_pengajuan = ? OR status_pengajuan = ?)", id, "DITERIMA", "BUKAN PENGAJUAN").
+		Order("id DESC").
+		Find(&pelanggaran).Error; err != nil {
+
 		c.JSON(http.StatusNotFound, gin.H{"error": "Pelanggaran Santri tidak ditemukan"})
 		return
 	}
