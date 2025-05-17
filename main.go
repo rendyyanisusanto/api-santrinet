@@ -47,7 +47,7 @@ func main() {
 	routes.SantriRoutes(r)
 	routes.KamarSantriRoutes(r)
 	routes.PelanggaranRoutes(r)
-
+	routes.RekamMedisRoutes(r)
 	routes.LoginRoutes(r)
 
 	r.Run(":5555")
