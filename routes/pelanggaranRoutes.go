@@ -12,5 +12,7 @@ func PelanggaranRoutes(r *gin.Engine) {
 	{
 		Pelanggaran.GET("/santri_id/:id", controllers.GetPelanggaranById)
 		Pelanggaran.GET("/detail/:id", controllers.GetDetailPelanggaranById)
+		Pelanggaran.GET("/total/:id", controllers.GetTotalPelanggaranBySantriID)
+		Pelanggaran.GET("/total-hari-ini/:id", controllers.GetTotalPelanggaranHariIniBySantriID)
 	}
 }
