@@ -5,10 +5,7 @@ type Pelanggaran struct {
 	Nama                     string `gorm:"column:nama" json:"nama"`
 	Kode                     string `gorm:"column:kode" json:"kode"`
 	SantriID                 uint   `gorm:"column:santri_id" json:"santri_id"`
-	Pelanggaran              string `gorm:"column:pelanggaran" json:"pelanggaran"`
 	TatibID                  uint   `gorm:"column:tatib_id" json:"tatib_id"`
-	Takzir                   string `gorm:"column:takzir" json:"takzir"`
-	PengurusID               uint   `gorm:"column:pengurus_id" json:"pengurus_id"`
 	PelaporID                uint   `gorm:"column:pelapor_id" json:"pelapor_id"`
 	StatusDokumenPelanggaran string `gorm:"column:status_dokumen_pelanggaran" json:"status_dokumen_pelanggaran"`
 	Tanggal                  string `gorm:"column:tanggal" json:"tanggal"`
