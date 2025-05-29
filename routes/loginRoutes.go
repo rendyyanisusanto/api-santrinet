@@ -9,4 +9,5 @@ import (
 func LoginRoutes(r *gin.Engine) {
 	// Tanpa AuthMiddleware
 	r.POST("/login", controllers.Login)
+	r.POST("/refresh", controllers.RefreshToken)
 }
