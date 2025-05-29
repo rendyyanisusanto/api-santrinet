@@ -57,7 +57,7 @@ func AddPengajuanPelanggaran(c *gin.Context) {
 		}
 
 		// Simpan path relatif untuk database
-		relPath = fmt.Sprintf("pelanggaran/%s", newFileName)
+		relPath = fmt.Sprintf("%s", newFileName)
 	}
 
 	// Ambil form-data lainnya
