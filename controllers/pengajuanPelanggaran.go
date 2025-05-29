@@ -3,12 +3,15 @@ package controllers
 
 import (
 	"fmt"
+	"math/rand"
 	"net/http"
 	"os"
+	"path/filepath"
 	"santrinet-api/database"
 	"santrinet-api/models"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -32,25 +35,30 @@ func GetPengajuanPelanggaran(c *gin.Context) {
 func AddPengajuanPelanggaran(c *gin.Context) {
 	db := database.DB
 
-	// Ambil file foto dari form
 	file, err := c.FormFile("foto")
 	var filePath string
+	var relPath string
 	if err == nil {
-		// Simpan file ke folder uploads
 		uploadDir := "/var/www/simsmk/santrinet-uploads/pelanggaran"
 		os.MkdirAll(uploadDir, os.ModePerm)
 
-		filePath = fmt.Sprintf("%s/%s", uploadDir, file.Filename)
+		// Dapatkan ekstensi file
+		fileExt := filepath.Ext(file.Filename)
+
+		// Buat nama file unik (misalnya timestamp + random angka)
+		newFileName := fmt.Sprintf("%d_%d%s", time.Now().Unix(), rand.Intn(1000), fileExt)
+
+		// Path lengkap untuk disimpan
+		filePath = fmt.Sprintf("%s/%s", uploadDir, newFileName)
+
 		if err := c.SaveUploadedFile(file, filePath); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal menyimpan file"})
 			return
 		}
-		// if err := c.SaveUploadedFile(file, filePath); err != nil {
-		// 	c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal menyimpan file"})
-		// 	return
-		// }
+
+		// Simpan path relatif untuk database
+		relPath = fmt.Sprintf("pelanggaran/%s", newFileName)
 	}
-	relPath := fmt.Sprintf("pelanggaran/%s", file.Filename)
 
 	// Ambil form-data lainnya
 	tatibID, _ := strconv.Atoi(c.PostForm("tatib_id"))
