@@ -30,6 +30,7 @@ func main() {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
 			"http://192.168.100.99:10000",
+			"https://walisantri-app.simsmk.sch.id",
 			"https://simsmk.sch.id",
 		}, // Ganti dengan domain tertentu jika perlu
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -56,5 +57,5 @@ func main() {
 	routes.TatibRoutes(r)
 	routes.LoginRoutes(r)
 
-	r.Run(":5555")
+	r.Run(":10001")
 }
