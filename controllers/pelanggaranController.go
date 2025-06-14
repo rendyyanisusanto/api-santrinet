@@ -17,11 +17,6 @@ func GetPelanggaranById(c *gin.Context) {
 	var pelanggaran []models.Pelanggaran
 	if err := db.
 		Preload("Santri").
-		Preload("Tatib").
-		Preload("Tatib.KategoriTatib").
-		Preload("Pengurus").
-		Preload("Pengurus.Santri").
-		Preload("Pengurus.LembagaPengurus").
 		Where("santri_id = ? AND (status_pengajuan = ? OR status_pengajuan = ?)", id, "DITERIMA", "BUKAN PENGAJUAN").
 		Order("id DESC").
 		Find(&pelanggaran).Error; err != nil {
