@@ -10,7 +10,6 @@ import (
 	"santrinet-api/database"
 	"santrinet-api/models"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -25,7 +24,7 @@ func GetPengajuanPelanggaran(c *gin.Context) {
 
 	var data []models.PengajuanPelanggaran
 
-	if err := db.Preload("DetailSantri").Order("id DESC").Find(&data).Error; err != nil {
+	if err := db.Preload("Tatib").Order("id DESC").Find(&data).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal mengambil data"})
 		return
 	}
@@ -65,13 +64,15 @@ func AddPengajuanPelanggaran(c *gin.Context) {
 	pelaporID, _ := strconv.Atoi(c.PostForm("pelapor_id"))
 	tanggal := c.PostForm("tanggal")
 	kronologi := c.PostForm("kronologi")
-	santriIDsStr := c.PostForm("santri_ids")
 
-	// Parse santri IDs dari string ke slice
+	santriIDsStr := c.PostFormArray("santri_ids")
+
 	var santriIDs []uint
-	for _, idStr := range strings.Split(santriIDsStr, ",") {
-		id, _ := strconv.Atoi(strings.TrimSpace(idStr))
-		santriIDs = append(santriIDs, uint(id))
+	for _, idStr := range santriIDsStr {
+		id, err := strconv.Atoi(idStr)
+		if err == nil {
+			santriIDs = append(santriIDs, uint(id))
+		}
 	}
 
 	// Simpan data utama
@@ -100,5 +101,5 @@ func AddPengajuanPelanggaran(c *gin.Context) {
 		db.Create(&detail)
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Pengajuan berhasil disimpan", "data": pengajuan})
+	c.JSON(http.StatusOK, gin.H{"message": "Pengajuan berhasil disimpan", "data": pengajuan, "post": c.Request.PostForm})
 }

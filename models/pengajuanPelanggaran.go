@@ -11,8 +11,8 @@ type PengajuanPelanggaran struct {
 	Foto            string `json:"foto"`
 	StatusPengajuan string `json:"status_pengajuan"`
 
-	// Relasi detail santri
-	DetailSantri []DetailPengajuanPelanggaran `json:"detail_santri" gorm:"foreignKey:PengajuanPelanggaranID"`
+	// Relasi detail tatib
+	Tatib Tatib `json:"Tatib" gorm:"foreignKey:ID;references:TatibID"`
 }
 
 func (PengajuanPelanggaran) TableName() string {
