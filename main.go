@@ -59,6 +59,7 @@ func main() {
 	routes.PengajuanPelanggaranRoutes(r)
 	routes.TatibRoutes(r)
 	routes.LoginRoutes(r)
+	routes.PerizinanSantriRoutes(r)
 
 	r.Run(":10001")
 }
