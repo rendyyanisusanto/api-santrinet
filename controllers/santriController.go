@@ -12,7 +12,7 @@ func GetAllSantri(c *gin.Context) {
 	db := database.DB
 
 	var santri []models.Santri
-	if err := db.Limit(20).Find(&santri).Error; err != nil {
+	if err := db.Find(&santri).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"Message": "Gagal mengambil data"})
 		return
 	}
@@ -59,6 +59,14 @@ func GetSantriDetailByID(c *gin.Context) {
 		})
 		return
 	}
+	// ambil data dokumen santri
+	var dokumenSantri []models.SantriDokumen
+	if err := db.Where("santri_id = ?", id).Find(&dokumenSantri).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Gagal mengambil dokumen santri",
+		})
+		return
+	}
 
 	// 3. Format ke struct ringan (KamarSantriResponse)
 	response := models.KamarSantriResponse{
@@ -73,7 +81,8 @@ func GetSantriDetailByID(c *gin.Context) {
 
 	// 4. Return JSON gabungan
 	c.JSON(http.StatusOK, gin.H{
-		"santri":       santri,
-		"kamar_santri": response,
+		"santri":         santri,
+		"kamar_santri":   response,
+		"dokumen_santri": dokumenSantri,
 	})
 }
