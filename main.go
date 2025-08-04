@@ -62,6 +62,7 @@ func main() {
 	routes.PerizinanSantriRoutes(r)
 	routes.PengasuhRoutes(r)
 	routes.IjinPengurusRoutes(r)
+	routes.PengurusRoutes(r)
 
 	r.Run(":10001")
 }
