@@ -16,5 +16,5 @@ type PresensiJoin struct {
 }
 
 func (PresensiSantri) TableName() string {
-	return "jadwal_presensi"
+	return "presensi_santri"
 }

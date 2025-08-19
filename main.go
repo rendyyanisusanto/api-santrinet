@@ -30,7 +30,7 @@ func main() {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
 			"http://192.168.100.99:10000",
-			"http://192.168.155.38:10003",
+			"http://192.168.127.13:10003",
 			"http://localhost:10005",
 			"https://walisantri-app.simsmk.sch.id",
 			"https://pengurus-app.simsmk.sch.id",
@@ -63,6 +63,7 @@ func main() {
 	routes.PengasuhRoutes(r)
 	routes.IjinPengurusRoutes(r)
 	routes.PengurusRoutes(r)
-
+	routes.KamarRoutes(r)
+	routes.JadwalPresensiRoutes(r)
 	r.Run(":10001")
 }
