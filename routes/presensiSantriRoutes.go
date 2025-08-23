@@ -12,5 +12,6 @@ func PresensiSantriRoutes(r *gin.Engine) {
 	{
 		Presensi.GET("/santri_id/:id", controllers.GetPresensiSantriBySantriID)
 		Presensi.GET("/filter", controllers.GetPresensiByKamar)
+		Presensi.POST("/update", controllers.UpdatePresensiSantri)
 	}
 }

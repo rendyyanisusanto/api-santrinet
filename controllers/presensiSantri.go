@@ -10,9 +10,16 @@ import (
 )
 
 type PresensiSantriResponse struct {
-	SantriID        uint   `json:"santri_id"`
-	NamaSantri      string `json:"nama_santri"`
-	StatusKehadiran string `json:"status_kehadiran,omitempty"` // kosong jika belum absen
+	SantriID        uint                    `json:"santri_id"`
+	NamaSantri      string                  `json:"nama_santri"`
+	StatusKehadiran string                  `json:"status_kehadiran,omitempty"` // kosong jika belum absen
+	Perizinan       *models.PerizinanSantri `json:"perizinan,omitempty"`
+}
+type UpdatePresensiRequest struct {
+	SantriID         uint   `json:"santri_id" binding:"required"`
+	Tanggal          string `json:"tanggal" binding:"required"`
+	JadwalPresensiID uint   `json:"jadwal_presensi_id" binding:"required"`
+	StatusKehadiran  string `json:"status_kehadiran" binding:"required"`
 }
 
 func GetPresensiSantriBySantriID(c *gin.Context) {
@@ -109,14 +116,81 @@ func GetPresensiByKamar(c *gin.Context) {
 	// Bangun response
 	var response []PresensiSantriResponse
 	for _, ks := range kamarSantri {
+		// cek apakah ada perizinan aktif
+		var perizinan models.PerizinanSantri
+		err := db.Where("? BETWEEN tanggal_izin AND tanggal_kembali AND santri_id = ? AND status_aktif = 1",
+			tanggal, ks.SantriID).
+			First(&perizinan).Error
+
+		var izin *models.PerizinanSantri
+		if err == nil { // ada izin
+			izin = &perizinan
+		} else {
+			izin = nil
+		}
+
 		response = append(response, PresensiSantriResponse{
 			SantriID:        ks.SantriID,
 			NamaSantri:      ks.Nama,
 			StatusKehadiran: presensiMap[ks.SantriID], // otomatis kosong kalau belum ada
+			Perizinan:       izin,
 		})
 	}
 
 	c.JSON(http.StatusOK, response)
+}
+
+func UpdatePresensiSantri(c *gin.Context) {
+	var req UpdatePresensiRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	db := database.DB
+
+	var presensi models.PresensiSantri
+	// cek apakah sudah ada datanya
+	err := db.Where("santri_id = ? AND tanggal = ? AND jadwal_presensi_id = ?",
+		req.SantriID, req.Tanggal, req.JadwalPresensiID).
+		First(&presensi).Error
+
+	if err != nil {
+		// kalau tidak ada → buat baru
+		newPresensi := models.PresensiSantri{
+			SantriID:         req.SantriID,
+			Tanggal:          req.Tanggal,
+			JadwalPresensiID: req.JadwalPresensiID,
+			StatusKehadiran:  req.StatusKehadiran,
+		}
+		if err := db.Create(&newPresensi).Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Gagal membuat presensi",
+			})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Presensi berhasil ditambahkan",
+			"data":    newPresensi,
+		})
+		return
+	}
+
+	// kalau sudah ada → update status
+	presensi.StatusKehadiran = req.StatusKehadiran
+	if err := db.Save(&presensi).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Gagal update presensi",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Presensi berhasil diupdate",
+		"data":    presensi,
+	})
 }
 
 // helper ambil slice santri_id
