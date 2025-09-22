@@ -32,6 +32,7 @@ func main() {
 			"http://192.168.100.99:10000",
 			"http://192.168.127.13:10003",
 			"http://localhost:10005",
+			"http://localhost:5173",
 			"https://walisantri-app.simsmk.sch.id",
 			"https://pengurus-app.simsmk.sch.id",
 			"https://simsmk.sch.id",

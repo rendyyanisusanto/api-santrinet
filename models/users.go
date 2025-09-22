@@ -15,6 +15,7 @@ type Users struct {
 }
 
 type Group struct {
-	ID   uint   `gorm:"column:id;primaryKey" json:"id"`
-	Name string `gorm:"column:name" json:"name"`
+	ID           uint           `gorm:"column:id;primaryKey" json:"id"`
+	Name         string         `gorm:"column:name" json:"name"`
+	GroupsDetail []GroupsDetail `gorm:"foreignKey:GroupsID;references:ID" json:"groups_detail"`
 }

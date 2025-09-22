@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: Santrinet API - User Permissions
+  description: API documentation for User Permission endpoint
+  version: 1.0.0
+  
+paths:
+  /login/get_permission/{user_id}:
+    get:
+      summary: Mendapatkan data permission user
+      description: Mengambil data permission user berdasarkan user_id yang diorganisir per menu dan submenu dengan detail CRUD permissions
+      tags:
+        - User Permissions
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: ID user yang akan diambil data permissionnya
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Berhasil mengambil data permission user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    description: ID user
+                    example: 1
+                  username:
+                    type: string
+                    description: Username user
+                    example: "admin"
+                  permissions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MenuPermission'
+              example:
+                user_id: 1
+                username: "admin"
+                permissions:
+                  - menu_id: 1
+                    menu_name: "Master Data"
+                    submenus:
+                      - submenu_id: 1
+                        submenu_name: "Data Santri"
+                        permissions:
+                          create: true
+                          read: true
+                          update: true
+                          delete: false
+                      - submenu_id: 2
+                        submenu_name: "Data Pengurus"
+                        permissions:
+                          create: true
+                          read: true
+                          update: false
+                          delete: false
+                  - menu_id: 2
+                    menu_name: "Pelanggaran"
+                    submenus:
+                      - submenu_id: 3
+                        submenu_name: "Data Pelanggaran"
+                        permissions:
+                          create: false
+                          read: true
+                          update: false
+                          delete: false
+        '400':
+          description: User ID tidak valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "User ID tidak valid"
+        '404':
+          description: User tidak ditemukan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "User tidak ditemukan"
+
+components:
+  schemas:
+    MenuPermission:
+      type: object
+      properties:
+        menu_id:
+          type: integer
+          description: ID menu
+          example: 1
+        menu_name:
+          type: string
+          description: Nama menu
+          example: "Master Data"
+        submenus:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubmenuPermission'
+      required:
+        - menu_id
+        - menu_name
+        - submenus
+
+    SubmenuPermission:
+      type: object
+      properties:
+        submenu_id:
+          type: integer
+          description: ID submenu
+          example: 1
+        submenu_name:
+          type: string
+          description: Nama submenu
+          example: "Data Santri"
+        permissions:
+          $ref: '#/components/schemas/CRUD'
+      required:
+        - submenu_id
+        - submenu_name
+        - permissions
+
+    CRUD:
+      type: object
+      properties:
+        create:
+          type: boolean
+          description: Permission untuk Create/Tambah data
+          example: true
+        read:
+          type: boolean
+          description: Permission untuk Read/Lihat data
+          example: true
+        update:
+          type: boolean
+          description: Permission untuk Update/Edit data
+          example: true
+        delete:
+          type: boolean
+          description: Permission untuk Delete/Hapus data
+          example: false
+      required:
+        - create
+        - read
+        - update
+        - delete
+
+    GroupsDetail:
+      type: object
+      description: Detail permission group yang menghubungkan group dengan submenu
+      properties:
+        id:
+          type: integer
+          description: ID groups detail
+          example: 1
+        groups_id:
+          type: integer
+          description: ID group
+          example: 1
+        submenu_id:
+          type: integer
+          description: ID submenu
+          example: 1
+        c:
+          type: integer
+          description: Permission Create (0=tidak, 1=ya)
+          example: 1
+        r:
+          type: integer
+          description: Permission Read (0=tidak, 1=ya)
+          example: 1
+        u:
+          type: integer
+          description: Permission Update (0=tidak, 1=ya)
+          example: 1
+        d:
+          type: integer
+          description: Permission Delete (0=tidak, 1=ya)
+          example: 0
+
+    Submenu:
+      type: object
+      description: Data submenu
+      properties:
+        id:
+          type: integer
+          description: ID submenu
+          example: 1
+        menu_id:
+          type: integer
+          description: ID menu parent
+          example: 1
+        submenu:
+          type: string
+          description: Nama submenu
+          example: "Data Santri"
+
+    Menu:
+      type: object
+      description: Data menu
+      properties:
+        id:
+          type: integer
+          description: ID menu
+          example: 1
+        menu:
+          type: string
+          description: Nama menu
+          example: "Master Data"
+
+tags:
+  - name: User Permissions
+    description: Operasi terkait permission user yang diorganisir per menu dan submenu

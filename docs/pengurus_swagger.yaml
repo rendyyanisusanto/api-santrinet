@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Santrinet API - Pengurus
+  description: API documentation for Pengurus endpoints
+  version: 1.0.0
+  
+paths:
+  /pengurus/:
+    get:
+      summary: Mendapatkan semua data pengurus
+      description: Mengambil seluruh data pengurus beserta relasi data santri dan lembaga pengurus
+      tags:
+        - Pengurus
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Berhasil mengambil data pengurus
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pengurus'
+              example:
+                - id: 1
+                  santri_id: "12345"
+                  lembaga_pengurus_id: 1
+                  santri:
+                    id: 12345
+                    nis: "2023001"
+                    nama: "Ahmad Santri"
+                    jenis_kelamin: "L"
+                    tempat_lahir: "Jakarta"
+                    tanggal_lahir: "2005-01-15"
+                    alamat: "Jl. Contoh No. 123"
+                    nama_ayah: "Bapak Ahmad"
+                    nama_ibu: "Ibu Ahmad"
+                    no_hp_ayah: "081234567890"
+                    no_hp_ibu: "081234567891"
+                    status_aktif: "Aktif"
+                    status_santri: "Mukim"
+                    nama_wali: "Paman Ahmad"
+                    no_hp_wali: "081234567892"
+                    foto: "foto_ahmad.jpg"
+                    nik: "1234567890123456"
+                  lembaga_pengurus:
+                    id: 1
+                    kode: "KETUA"
+                    nama: "Ketua Organisasi Santri"
+        '500':
+          description: Gagal mengambil data pengurus
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Gagal mengambil data pengurus"
+        '401':
+          description: Unauthorized - Token tidak valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+
+components:
+  schemas:
+    Pengurus:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID unik pengurus
+          example: 1
+        santri_id:
+          type: string
+          description: ID santri yang menjadi pengurus
+          example: "12345"
+        lembaga_pengurus_id:
+          type: integer
+          description: ID lembaga pengurus
+          example: 1
+        santri:
+          $ref: '#/components/schemas/Santri'
+        lembaga_pengurus:
+          $ref: '#/components/schemas/LembagaPengurus'
+      required:
+        - id
+        - santri_id
+        - lembaga_pengurus_id
+
+    Santri:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID unik santri
+          example: 12345
+        nis:
+          type: string
+          description: Nomor Induk Santri
+          example: "2023001"
+        nama:
+          type: string
+          description: Nama lengkap santri
+          example: "Ahmad Santri"
+        jenis_kelamin:
+          type: string
+          description: Jenis kelamin santri (L/P)
+          example: "L"
+        tempat_lahir:
+          type: string
+          description: Tempat lahir santri
+          example: "Jakarta"
+        tanggal_lahir:
+          type: string
+          description: Tanggal lahir santri
+          example: "2005-01-15"
+        alamat:
+          type: string
+          description: Alamat santri
+          example: "Jl. Contoh No. 123"
+        nama_ayah:
+          type: string
+          description: Nama ayah santri
+          example: "Bapak Ahmad"
+        nama_ibu:
+          type: string
+          description: Nama ibu santri
+          example: "Ibu Ahmad"
+        no_hp_ayah:
+          type: string
+          description: Nomor HP ayah santri
+          example: "081234567890"
+        no_hp_ibu:
+          type: string
+          description: Nomor HP ibu santri
+          example: "081234567891"
+        status_aktif:
+          type: string
+          description: Status aktif santri
+          example: "Aktif"
+        status_santri:
+          type: string
+          description: Status santri (Mukim/Pulang)
+          example: "Mukim"
+        nama_wali:
+          type: string
+          description: Nama wali santri
+          example: "Paman Ahmad"
+        no_hp_wali:
+          type: string
+          description: Nomor HP wali santri
+          example: "081234567892"
+        foto:
+          type: string
+          description: Foto santri
+          example: "foto_ahmad.jpg"
+        nik:
+          type: string
+          description: NIK santri
+          example: "1234567890123456"
+
+    LembagaPengurus:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID unik lembaga pengurus
+          example: 1
+        kode:
+          type: string
+          description: Kode lembaga pengurus
+          example: "KETUA"
+        nama:
+          type: string
+          description: Nama lembaga pengurus
+          example: "Ketua Organisasi Santri"
+      required:
+        - id
+        - kode
+        - nama
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Masukkan token JWT yang diperoleh dari endpoint login
+
+tags:
+  - name: Pengurus
+    description: Operasi terkait data pengurus santri
