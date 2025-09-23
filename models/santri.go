@@ -18,6 +18,7 @@ type Santri struct {
 	NoHPWali     string `gorm:"column:no_hp_wali" json:"no_hp_wali"`
 	Foto         string `gorm:"column:foto" json:"foto"`
 	Nik          string `gorm:"column:nik" json:"nik"`
+	Nip          string `gorm:"column:nip" json:"nip"`
 }
 
 func (Santri) TableName() string {
