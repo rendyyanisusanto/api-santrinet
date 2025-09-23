@@ -275,7 +275,7 @@ func UpdateSantri(c *gin.Context) {
 func GetSantriFiltered(c *gin.Context) {
 	db := database.DB
 
-	search := c.Query("search")           // Pencarian nama/NIS
+	search := c.Query("search") // Pencarian nama/NIS
 	jenisKelamin := c.Query("jenis_kelamin")
 	statusAktif := c.Query("status_aktif")
 	statusSantri := c.Query("status_santri")
