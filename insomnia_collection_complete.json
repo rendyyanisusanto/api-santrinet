@@ -1,0 +1,1020 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-11-03T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_login",
+      "parentId": "fld_auth",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/login",
+      "name": "Login",
+      "description": "Login pengguna untuk mendapatkan JWT token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699070000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_refresh_token",
+      "parentId": "fld_auth",
+      "url": "{{ _.base_url }}/refresh",
+      "name": "Refresh Token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refresh_token\": \"your_refresh_token\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaSortKey": -1699069000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_generate_token",
+      "parentId": "fld_auth",
+      "url": "{{ _.base_url }}/token",
+      "name": "Generate Token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"user_id\": 1,\n  \"username\": \"admin\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaSortKey": -1699068000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_permissions",
+      "parentId": "fld_auth",
+      "url": "{{ _.base_url }}/login/get_permission/1",
+      "name": "Get Group Permissions",
+      "method": "GET",
+      "metaSortKey": -1699067000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_santri",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/",
+      "name": "Get All Santri",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699066000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_by_id",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/id/1583",
+      "name": "Get Santri by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699065000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_detail",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/detail/1583",
+      "name": "Get Santri Detail by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699064000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_paginated",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/paginated",
+      "name": "Get Santri with Pagination",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "page",
+          "value": "1"
+        },
+        {
+          "name": "limit",
+          "value": "10"
+        },
+        {
+          "name": "search",
+          "value": "Ahmad"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699063000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_filtered",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/filter",
+      "name": "Get Santri Filtered",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "jenis_kelamin",
+          "value": "L"
+        },
+        {
+          "name": "status_aktif",
+          "value": "1"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699062000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_santri",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/",
+      "name": "Create Santri",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nis\": \"2025001\",\n  \"nama\": \"Ahmad Rizki\",\n  \"jenis_kelamin\": \"L\",\n  \"tempat_lahir\": \"Jakarta\",\n  \"tanggal_lahir\": \"2005-01-15\",\n  \"alamat\": \"Jl. Merdeka No. 123\",\n  \"nama_ayah\": \"Budi Santoso\",\n  \"nama_ibu\": \"Siti Aminah\",\n  \"no_hp_ayah\": \"081234567890\",\n  \"no_hp_ibu\": \"081234567891\",\n  \"status_aktif\": \"1\",\n  \"status_santri\": \"AKTIF\",\n  \"nama_wali\": \"Budi Santoso\",\n  \"no_hp_wali\": \"081234567890\",\n  \"nik\": \"3201010115050001\",\n  \"nip\": \"20250001\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699061000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_santri",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/1583",
+      "name": "Update Santri",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nama\": \"Ahmad Rizki Updated\",\n  \"alamat\": \"Jl. Merdeka No. 456\",\n  \"no_hp_ayah\": \"081234567999\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699060000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_soft_delete_santri",
+      "parentId": "fld_santri",
+      "url": "{{ _.base_url }}/santri/nonaktif/1583",
+      "name": "Soft Delete Santri",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699059000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_presensi_santri_by_id",
+      "parentId": "fld_presensi_santri",
+      "url": "{{ _.base_url }}/presensi_santri/santri_id/1583",
+      "name": "Get Presensi by Santri ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699058000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_presensi_by_kamar",
+      "parentId": "fld_presensi_santri",
+      "url": "{{ _.base_url }}/presensi_santri/filter",
+      "name": "Get Presensi by Kamar",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "kamar_id",
+          "value": "1"
+        },
+        {
+          "name": "tanggal",
+          "value": "2025-11-03"
+        },
+        {
+          "name": "jadwal_presensi_id",
+          "value": "1"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699057000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_presensi",
+      "parentId": "fld_presensi_santri",
+      "url": "{{ _.base_url }}/presensi_santri/update",
+      "name": "Update Presensi Santri",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"santri_id\": 1583,\n  \"tanggal\": \"2025-11-03\",\n  \"jadwal_presensi_id\": 1,\n  \"status_kehadiran\": \"HADIR\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699056000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_rekap_harian",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/rekap-harian",
+      "name": "Laporan Rekap Harian",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "tanggal",
+          "value": "2025-11-03"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699055000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_bulanan_semua_santri",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/bulanan-per-santri",
+      "name": "Laporan Bulanan - Semua Santri",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "bulan",
+          "value": "2025-11"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699054000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_bulanan_santri_tertentu",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/bulanan-per-santri",
+      "name": "Laporan Bulanan - Santri Tertentu",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "bulan",
+          "value": "2025-11"
+        },
+        {
+          "name": "santri_id",
+          "value": "1583"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699053000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_per_waktu_semua",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran per Waktu - Semua",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699052000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_per_waktu_santri",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran per Waktu - Santri Tertentu",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30"
+        },
+        {
+          "name": "santri_id",
+          "value": "1583"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699051000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_waktu_pagi",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran - Hanya Pagi",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30"
+        },
+        {
+          "name": "waktu_presensi",
+          "value": "pagi"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699050000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_kamar",
+      "parentId": "fld_kamar",
+      "url": "{{ _.base_url }}/kamar/",
+      "name": "Get All Kamar",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699049000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_kamar_santri_by_id",
+      "parentId": "fld_kamar",
+      "url": "{{ _.base_url }}/KamarSantri/santri_id/1583",
+      "name": "Get Kamar Santri by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699048000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_jadwal_presensi",
+      "parentId": "fld_jadwal",
+      "url": "{{ _.base_url }}/jadwalPresensi/",
+      "name": "Get Jadwal Presensi",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699047000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_pelanggaran_by_id",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/pelanggaran/santri_id/1583",
+      "name": "Get Pelanggaran by Santri ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699046000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_detail_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/pelanggaran/detail/1",
+      "name": "Get Detail Pelanggaran by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699045000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_total_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/pelanggaran/total/1583",
+      "name": "Get Total Pelanggaran by Santri ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699044000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_total_pelanggaran_hari_ini",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/pelanggaran/total-hari-ini/1583",
+      "name": "Get Total Pelanggaran Hari Ini",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699043000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_pengajuan_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/Pengajuanpelanggaran/",
+      "name": "Get Pengajuan Pelanggaran",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699042000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_add_pengajuan_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/Pengajuanpelanggaran/",
+      "name": "Add Pengajuan Pelanggaran",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"santri_id\": 1583,\n  \"tatib_id\": 1,\n  \"tanggal_pelanggaran\": \"2025-11-03\",\n  \"keterangan\": \"Terlambat masuk asrama\",\n  \"pengurus_id\": 1\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699041000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_poin_pelanggaran_by_id",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/PoinPelanggaran/1",
+      "name": "Get Poin Pelanggaran by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699040000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_poin_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "url": "{{ _.base_url }}/PoinPelanggaran/",
+      "name": "Get All Poin Pelanggaran",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699039000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_pengurus",
+      "parentId": "fld_pengurus",
+      "url": "{{ _.base_url }}/pengurus/",
+      "name": "Get All Pengurus",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699038000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_pengurus_sedang_keluar",
+      "parentId": "fld_pengurus",
+      "url": "{{ _.base_url }}/ijin_pengurus/keluar",
+      "name": "Get Pengurus Sedang Keluar",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699037000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_ijin_pengurus",
+      "parentId": "fld_pengurus",
+      "url": "{{ _.base_url }}/ijin_pengurus/",
+      "name": "Get All Ijin Pengurus",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699036000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_pengasuh_by_id",
+      "parentId": "fld_pengasuh",
+      "url": "{{ _.base_url }}/pengasuh/id/1",
+      "name": "Get Pengasuh by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699035000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_pengasuh",
+      "parentId": "fld_pengasuh",
+      "url": "{{ _.base_url }}/pengasuh/",
+      "name": "Get All Pengasuh",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699034000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_perizinan_santri",
+      "parentId": "fld_perizinan",
+      "url": "{{ _.base_url }}/PerizinanSantri/",
+      "name": "Get Perizinan Santri",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699033000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_add_perizinan_santri",
+      "parentId": "fld_perizinan",
+      "url": "{{ _.base_url }}/PerizinanSantri/",
+      "name": "Add Perizinan Santri",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"santri_id\": 1583,\n  \"tanggal_izin\": \"2025-11-03\",\n  \"tanggal_kembali\": \"2025-11-05\",\n  \"keperluan\": \"Pulang kampung\",\n  \"alamat_tujuan\": \"Jakarta\",\n  \"status_aktif\": 1\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699032000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_rekam_medis_by_santri",
+      "parentId": "fld_rekam_medis",
+      "url": "{{ _.base_url }}/rekam_medis/santri_id/1583",
+      "name": "Get Rekam Medis by Santri ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699031000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_rekam_medis_by_id",
+      "parentId": "fld_rekam_medis",
+      "url": "{{ _.base_url }}/rekam_medis/id/1",
+      "name": "Get Rekam Medis by ID",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699030000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_tatib",
+      "parentId": "fld_tatib",
+      "url": "{{ _.base_url }}/tatib/",
+      "name": "Get Tatib",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "metaSortKey": -1699029000000,
+      "_type": "request"
+    },
+    {
+      "_id": "fld_auth",
+      "parentId": "wrk_main",
+      "name": "🔐 Authentication",
+      "description": "Endpoint untuk autentikasi dan authorization",
+      "metaSortKey": -1699070000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_santri",
+      "parentId": "wrk_main",
+      "name": "👤 Santri Management",
+      "description": "Endpoint untuk manajemen data santri",
+      "metaSortKey": -1699069000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_presensi_santri",
+      "parentId": "wrk_main",
+      "name": "✅ Presensi Santri",
+      "description": "Endpoint untuk manajemen presensi santri",
+      "metaSortKey": -1699068000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_laporan_presensi",
+      "parentId": "wrk_main",
+      "name": "📊 Laporan Presensi",
+      "description": "Endpoint untuk laporan dan analisis presensi santri",
+      "metaSortKey": -1699067000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_kamar",
+      "parentId": "wrk_main",
+      "name": "🏠 Kamar & Asrama",
+      "description": "Endpoint untuk manajemen kamar dan asrama",
+      "metaSortKey": -1699066000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_jadwal",
+      "parentId": "wrk_main",
+      "name": "📅 Jadwal",
+      "description": "Endpoint untuk manajemen jadwal presensi",
+      "metaSortKey": -1699065000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_pelanggaran",
+      "parentId": "wrk_main",
+      "name": "⚠️ Pelanggaran & Tata Tertib",
+      "description": "Endpoint untuk manajemen pelanggaran dan tata tertib",
+      "metaSortKey": -1699064000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_pengurus",
+      "parentId": "wrk_main",
+      "name": "👥 Pengurus",
+      "description": "Endpoint untuk manajemen pengurus dan ijin pengurus",
+      "metaSortKey": -1699063000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_pengasuh",
+      "parentId": "wrk_main",
+      "name": "🧑‍🏫 Pengasuh",
+      "description": "Endpoint untuk manajemen data pengasuh",
+      "metaSortKey": -1699062000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_perizinan",
+      "parentId": "wrk_main",
+      "name": "📝 Perizinan Santri",
+      "description": "Endpoint untuk manajemen perizinan santri",
+      "metaSortKey": -1699061000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_rekam_medis",
+      "parentId": "wrk_main",
+      "name": "🏥 Rekam Medis",
+      "description": "Endpoint untuk manajemen rekam medis santri",
+      "metaSortKey": -1699060000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_tatib",
+      "parentId": "wrk_main",
+      "name": "📋 Tata Tertib",
+      "description": "Endpoint untuk manajemen tata tertib",
+      "metaSortKey": -1699059000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_account",
+      "parentId": "wrk_main",
+      "name": "👤 Account",
+      "description": "Endpoint untuk akun pengguna (profil dan password)",
+      "metaSortKey": -1699058500000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_main",
+      "parentId": null,
+      "name": "🏫 API Santrinet - Complete Collection",
+      "description": "Collection lengkap untuk testing seluruh API Santrinet - Sistem Manajemen Pondok Pesantren",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_get_account",
+      "parentId": "fld_account",
+      "url": "{{ _.base_url }}/account",
+      "name": "Get Account",
+      "method": "GET",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ _.token }}" }
+      ],
+      "metaSortKey": -1699058499000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_account",
+      "parentId": "fld_account",
+      "url": "{{ _.base_url }}/account",
+      "name": "Update Account",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"first_name\": \"Admin\",\n  \"last_name\": \"Santrinet\",\n  \"phone\": \"081234567890\",\n  \"company\": \"PPSQ\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ _.token }}" }
+      ],
+      "metaSortKey": -1699058498000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_change_password",
+      "parentId": "fld_account",
+      "url": "{{ _.base_url }}/account/password",
+      "name": "Change Password",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"current_password\": \"oldpass\",\n  \"new_password\": \"newpass123\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ _.token }}" }
+      ],
+      "metaSortKey": -1699058497000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_rekap_harian_per_kamar",
+      "parentId": "fld_laporan_presensi",
+      "url": "{{ _.base_url }}/presensi_santri/laporan/rekap-harian",
+      "name": "Laporan Rekap Harian per Kamar",
+      "method": "GET",
+      "parameters": [
+        { "name": "tanggal", "value": "2025-11-03" },
+        { "name": "kamar_id", "value": "1" }
+      ],
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ _.token }}" }
+      ],
+      "metaSortKey": -1699054990000,
+      "_type": "request"
+    },
+    {
+      "_id": "env_development",
+      "parentId": "wrk_main",
+      "name": "🔧 Development",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "token": "your_jwt_token_here"
+      },
+      "dataPropertyOrder": [
+        "&base_url",
+        "&token"
+      ],
+      "color": "#28a745",
+      "isPrivate": false,
+      "metaSortKey": 1699056000000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_staging",
+      "parentId": "wrk_main",
+      "name": "🧪 Staging",
+      "data": {
+        "base_url": "https://staging-api-santrinet.yourdomain.com",
+        "token": "your_staging_jwt_token"
+      },
+      "dataPropertyOrder": [
+        "&base_url",
+        "&token"
+      ],
+      "color": "#ffc107",
+      "isPrivate": false,
+      "metaSortKey": 1699056000001,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_production",
+      "parentId": "wrk_main",
+      "name": "🚀 Production",
+      "data": {
+        "base_url": "https://api-santrinet.yourdomain.com",
+        "token": "your_production_jwt_token"
+      },
+      "dataPropertyOrder": [
+        "&base_url",
+        "&token"
+      ],
+      "color": "#dc3545",
+      "isPrivate": false,
+      "metaSortKey": 1699056000002,
+      "_type": "environment"
+    }
+  ]
+}

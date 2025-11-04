@@ -10,7 +10,7 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
-	dsn := "root@tcp(127.0.0.1:3306)/ppsq?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "rendy:passwordku123@tcp(127.0.0.1:3306)/ppsq?charset=utf8mb4&parseTime=True&loc=Local"
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {

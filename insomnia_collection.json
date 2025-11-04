@@ -1,0 +1,1496 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-11-03T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_login",
+      "parentId": "fld_auth",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/login",
+      "name": "Login",
+      "description": "Login pengguna untuk mendapatkan JWT token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699070000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_refresh_token",
+      "parentId": "fld_auth",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/refresh",
+      "name": "Refresh Token",
+      "description": "Refresh JWT token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refresh_token\": \"your_refresh_token\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699069000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_generate_token",
+      "parentId": "fld_auth",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/token",
+      "name": "Generate Token",
+      "description": "Generate JWT token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"user_id\": 1,\n  \"username\": \"admin\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699068000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_permissions",
+      "parentId": "fld_auth",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/login/get_permission/1",
+      "name": "Get Group Permissions",
+      "description": "Mengambil permission berdasarkan group ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1699067000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_santri",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/",
+      "name": "Get All Santri",
+      "description": "Mengambil semua data santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699066000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_by_id",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/id/1583",
+      "name": "Get Santri by ID",
+      "description": "Mengambil data santri berdasarkan ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699065000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_detail",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/detail/1583",
+      "name": "Get Santri Detail by ID",
+      "description": "Mengambil detail lengkap santri berdasarkan ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699064000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_paginated",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/paginated",
+      "name": "Get Santri with Pagination",
+      "description": "Mengambil data santri dengan pagination",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "page",
+          "value": "1",
+          "description": "Halaman",
+          "id": "pair_page"
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "description": "Jumlah per halaman",
+          "id": "pair_limit"
+        },
+        {
+          "name": "search",
+          "value": "Ahmad",
+          "description": "Pencarian nama",
+          "id": "pair_search"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699063000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_santri_filtered",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/filter",
+      "name": "Get Santri Filtered",
+      "description": "Mengambil data santri dengan filter",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "jenis_kelamin",
+          "value": "L",
+          "description": "Filter jenis kelamin",
+          "id": "pair_jenis_kelamin"
+        },
+        {
+          "name": "status_aktif",
+          "value": "1",
+          "description": "Filter status aktif",
+          "id": "pair_status_aktif"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699062000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_santri",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/",
+      "name": "Create Santri",
+      "description": "Membuat data santri baru",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nis\": \"2025001\",\n  \"nama\": \"Ahmad Rizki\",\n  \"jenis_kelamin\": \"L\",\n  \"tempat_lahir\": \"Jakarta\",\n  \"tanggal_lahir\": \"2005-01-15\",\n  \"alamat\": \"Jl. Merdeka No. 123\",\n  \"nama_ayah\": \"Budi Santoso\",\n  \"nama_ibu\": \"Siti Aminah\",\n  \"no_hp_ayah\": \"081234567890\",\n  \"no_hp_ibu\": \"081234567891\",\n  \"status_aktif\": \"1\",\n  \"status_santri\": \"AKTIF\",\n  \"nama_wali\": \"Budi Santoso\",\n  \"no_hp_wali\": \"081234567890\",\n  \"nik\": \"3201010115050001\",\n  \"nip\": \"20250001\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699061000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_santri",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/1583",
+      "name": "Update Santri",
+      "description": "Update data santri",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nama\": \"Ahmad Rizki Updated\",\n  \"alamat\": \"Jl. Merdeka No. 456\",\n  \"no_hp_ayah\": \"081234567999\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699060000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_soft_delete_santri",
+      "parentId": "fld_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/santri/nonaktif/1583",
+      "name": "Soft Delete Santri",
+      "description": "Menonaktifkan santri (soft delete)",
+      "method": "PUT",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699059000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_presensi_santri_by_id",
+      "parentId": "fld_presensi_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/santri_id/1583",
+      "name": "Get Presensi by Santri ID",
+      "description": "Mengambil data presensi berdasarkan ID santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699058000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_presensi_by_kamar",
+      "parentId": "fld_presensi_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/filter",
+      "name": "Get Presensi by Kamar",
+      "description": "Mengambil data presensi berdasarkan kamar, tanggal, dan jadwal",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "kamar_id",
+          "value": "1",
+          "description": "ID Kamar",
+          "id": "pair_kamar_id"
+        },
+        {
+          "name": "tanggal",
+          "value": "2025-11-03",
+          "description": "Tanggal presensi",
+          "id": "pair_tanggal"
+        },
+        {
+          "name": "jadwal_presensi_id",
+          "value": "1",
+          "description": "ID Jadwal Presensi",
+          "id": "pair_jadwal_id"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699057000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_presensi",
+      "parentId": "fld_presensi_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/update",
+      "name": "Update Presensi Santri",
+      "description": "Membuat atau mengupdate presensi santri",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"santri_id\": 1583,\n  \"tanggal\": \"2025-11-03\",\n  \"jadwal_presensi_id\": 1,\n  \"status_kehadiran\": \"HADIR\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699056000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_rekap_harian",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/rekap-harian",
+      "name": "Laporan Rekap Harian",
+      "description": "Laporan rekap harian mengelompokkan berdasarkan waktu presensi",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal",
+          "value": "2025-11-03",
+          "description": "Tanggal laporan (YYYY-MM-DD)",
+          "id": "pair_tanggal_laporan"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699055000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_bulanan_semua_santri",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/bulanan-per-santri",
+      "name": "Laporan Bulanan - Semua Santri",
+      "description": "Laporan rekap bulanan untuk semua santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "bulan",
+          "value": "2025-11",
+          "description": "Bulan laporan (YYYY-MM)",
+          "id": "pair_bulan_laporan"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699054000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_bulanan_santri_tertentu",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/bulanan-per-santri",
+      "name": "Laporan Bulanan - Santri Tertentu",
+      "description": "Laporan rekap bulanan untuk santri tertentu",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "bulan",
+          "value": "2025-11",
+          "description": "Bulan laporan (YYYY-MM)",
+          "id": "pair_bulan_laporan"
+        },
+        {
+          "name": "santri_id",
+          "value": "1583",
+          "description": "ID Santri",
+          "id": "pair_santri_id_laporan"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699053000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_per_waktu_semua",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran per Waktu - Semua",
+      "description": "Laporan kehadiran per waktu presensi untuk semua santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01",
+          "description": "Tanggal mulai (YYYY-MM-DD)",
+          "id": "pair_tanggal_mulai"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30",
+          "description": "Tanggal selesai (YYYY-MM-DD)",
+          "id": "pair_tanggal_selesai"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699052000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_per_waktu_santri",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran per Waktu - Santri Tertentu",
+      "description": "Laporan kehadiran per waktu presensi untuk santri tertentu",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01",
+          "description": "Tanggal mulai (YYYY-MM-DD)",
+          "id": "pair_tanggal_mulai"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30",
+          "description": "Tanggal selesai (YYYY-MM-DD)",
+          "id": "pair_tanggal_selesai"
+        },
+        {
+          "name": "santri_id",
+          "value": "1583",
+          "description": "ID Santri",
+          "id": "pair_santri_id"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699051000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_waktu_pagi",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran - Hanya Pagi",
+      "description": "Laporan kehadiran khusus untuk presensi pagi",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01",
+          "description": "Tanggal mulai (YYYY-MM-DD)",
+          "id": "pair_tanggal_mulai"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30",
+          "description": "Tanggal selesai (YYYY-MM-DD)",
+          "id": "pair_tanggal_selesai"
+        },
+        {
+          "name": "waktu_presensi",
+          "value": "pagi",
+          "description": "Waktu presensi (pagi/siang/malam)",
+          "id": "pair_waktu_presensi"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699050000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_kamar",
+      "parentId": "fld_kamar",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/kamar/",
+      "name": "Get All Kamar",
+      "description": "Mengambil semua data kamar",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699049000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_kamar_santri_by_id",
+      "parentId": "fld_kamar",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/KamarSantri/santri_id/1583",
+      "name": "Get Kamar Santri by ID",
+      "description": "Mengambil data kamar santri berdasarkan ID santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699048000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_jadwal_presensi",
+      "parentId": "fld_jadwal",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/jadwalPresensi/",
+      "name": "Get Jadwal Presensi",
+      "description": "Mengambil semua jadwal presensi",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699047000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_pelanggaran_by_id",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/pelanggaran/santri_id/1583",
+      "name": "Get Pelanggaran by Santri ID",
+      "description": "Mengambil data pelanggaran berdasarkan ID santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699046000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_detail_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/pelanggaran/detail/1",
+      "name": "Get Detail Pelanggaran by ID",
+      "description": "Mengambil detail pelanggaran berdasarkan ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699045000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_total_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/pelanggaran/total/1583",
+      "name": "Get Total Pelanggaran by Santri ID",
+      "description": "Mengambil total pelanggaran santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699044000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_total_pelanggaran_hari_ini",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/pelanggaran/total-hari-ini/1583",
+      "name": "Get Total Pelanggaran Hari Ini",
+      "description": "Mengambil total pelanggaran santri hari ini",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699043000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_pengajuan_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/Pengajuanpelanggaran/",
+      "name": "Get Pengajuan Pelanggaran",
+      "description": "Mengambil semua pengajuan pelanggaran",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699042000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_add_pengajuan_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/Pengajuanpelanggaran/",
+      "name": "Add Pengajuan Pelanggaran",
+      "description": "Menambah pengajuan pelanggaran baru",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"santri_id\": 1583,\n  \"tatib_id\": 1,\n  \"tanggal_pelanggaran\": \"2025-11-03\",\n  \"keterangan\": \"Terlambat masuk asrama\",\n  \"pengurus_id\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699041000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_poin_pelanggaran_by_id",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/PoinPelanggaran/1",
+      "name": "Get Poin Pelanggaran by ID",
+      "description": "Mengambil poin pelanggaran berdasarkan ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699040000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_poin_pelanggaran",
+      "parentId": "fld_pelanggaran",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/PoinPelanggaran/",
+      "name": "Get All Poin Pelanggaran",
+      "description": "Mengambil semua poin pelanggaran",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699039000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_presensi",
+      "parentId": "fld_presensi_santri",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/update",
+      "name": "Update Presensi Santri",
+      "description": "Membuat atau mengupdate presensi santri",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"santri_id\": 1583,\n  \"tanggal\": \"2025-11-03\",\n  \"jadwal_presensi_id\": 1,\n  \"status_kehadiran\": \"HADIR\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699054000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_rekap_harian",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/rekap-harian",
+      "name": "Laporan Rekap Harian",
+      "description": "Laporan rekap harian mengelompokkan berdasarkan waktu presensi",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal",
+          "value": "2025-11-03",
+          "description": "Tanggal laporan (YYYY-MM-DD)",
+          "id": "pair_tanggal_laporan"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699053000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_bulanan_semua_santri",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/bulanan-per-santri",
+      "name": "Laporan Bulanan - Semua Santri",
+      "description": "Laporan rekap bulanan untuk semua santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "bulan",
+          "value": "2025-11",
+          "description": "Bulan laporan (YYYY-MM)",
+          "id": "pair_bulan_laporan"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699052000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_bulanan_santri_tertentu",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/bulanan-per-santri",
+      "name": "Laporan Bulanan - Santri Tertentu",
+      "description": "Laporan rekap bulanan untuk santri tertentu",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "bulan",
+          "value": "2025-11",
+          "description": "Bulan laporan (YYYY-MM)",
+          "id": "pair_bulan_laporan"
+        },
+        {
+          "name": "santri_id",
+          "value": "1583",
+          "description": "ID Santri",
+          "id": "pair_santri_id_laporan"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699051000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_per_waktu_semua",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran per Waktu - Semua",
+      "description": "Laporan kehadiran per waktu presensi untuk semua santri",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01",
+          "description": "Tanggal mulai (YYYY-MM-DD)",
+          "id": "pair_tanggal_mulai"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30",
+          "description": "Tanggal selesai (YYYY-MM-DD)",
+          "id": "pair_tanggal_selesai"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699050000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_per_waktu_santri",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran per Waktu - Santri Tertentu",
+      "description": "Laporan kehadiran per waktu presensi untuk santri tertentu",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01",
+          "description": "Tanggal mulai (YYYY-MM-DD)",
+          "id": "pair_tanggal_mulai"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30",
+          "description": "Tanggal selesai (YYYY-MM-DD)",
+          "id": "pair_tanggal_selesai"
+        },
+        {
+          "name": "santri_id",
+          "value": "1583",
+          "description": "ID Santri",
+          "id": "pair_santri_id"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699049000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_laporan_kehadiran_waktu_pagi",
+      "parentId": "fld_laporan_presensi",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "url": "{{ _.base_url }}/presensi_santri/laporan/kehadiran-per-waktu",
+      "name": "Laporan Kehadiran - Hanya Pagi",
+      "description": "Laporan kehadiran khusus untuk presensi pagi",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tanggal_mulai",
+          "value": "2025-11-01",
+          "description": "Tanggal mulai (YYYY-MM-DD)",
+          "id": "pair_tanggal_mulai"
+        },
+        {
+          "name": "tanggal_selesai",
+          "value": "2025-11-30",
+          "description": "Tanggal selesai (YYYY-MM-DD)",
+          "id": "pair_tanggal_selesai"
+        },
+        {
+          "name": "waktu_presensi",
+          "value": "pagi",
+          "description": "Waktu presensi (pagi/siang/malam)",
+          "id": "pair_waktu_presensi"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}",
+          "description": "",
+          "id": "pair_auth_header"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699048000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_presensi_santri",
+      "parentId": "wrk_main",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "name": "Presensi Santri",
+      "description": "Endpoint untuk manajemen presensi santri",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1699056000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_laporan_presensi",
+      "parentId": "wrk_main",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "name": "Laporan Presensi",
+      "description": "Endpoint untuk laporan dan analisis presensi santri",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1699055000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_main",
+      "parentId": null,
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "name": "API Santrinet - Presensi",
+      "description": "Collection untuk testing API Presensi Santri",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_base",
+      "parentId": "wrk_main",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "token": "your_jwt_token_here"
+      },
+      "dataPropertyOrder": [
+        "&base_url",
+        "&token"
+      ],
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1699056000000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_production",
+      "parentId": "wrk_main",
+      "modified": 1699056000000,
+      "created": 1699056000000,
+      "name": "Production Environment",
+      "data": {
+        "base_url": "https://your-production-api.com",
+        "token": "your_production_jwt_token"
+      },
+      "dataPropertyOrder": [
+        "&base_url",
+        "&token"
+      ],
+      "color": "#ff6b6b",
+      "isPrivate": false,
+      "metaSortKey": 1699056000001,
+      "_type": "environment"
+    }
+  ]
+}
